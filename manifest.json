@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "YouTube Burjan Fannify",
+    "version": "1.7.8",
+    "icons": {
+        "96": "icon.png"
+    },
+    "description": "Modify YouTube thumbnails to include Burjan Fanni",
+    "browser_action": {
+        "default_popup": "settings.html"
+    },
+    "permissions": [
+        "storage",
+        "*://*.youtube.com/*"
+    ],
+    "content_scripts": [{
+        "matches": ["*://*.youtube.com/*"],
+        "js": ["lib/browser-polyfill.js", "burjanfannify.js"],
+        "run_at": "document_idle"
+    }],
+    "web_accessible_resources": [
+        "images/*.png",
+        "images/*.json"
+    ]
+}

@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+    padding: 1em;
+    width: 250px;
+}
+
+h1 {
+    font-size: 1.2em;
+}
+
+.setting {
+    margin-bottom: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25em;
+}
+
+input[type="range"] {
+    width: 100%;
+} 
