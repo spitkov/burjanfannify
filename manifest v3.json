@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "burjan fannify",
-    "version": "1.7.9",
+    "version": "1.8.1",
     "icons": {
         "96": "icon.png"
     },
@@ -10,13 +10,14 @@
         "default_popup": "settings.html"
     },
     "permissions": [
-        "storage"
+        "storage",
+        "tabs"
     ],
     "host_permissions": ["*://*.youtube.com/*"],
     "content_scripts": [{
         "matches": ["*://*.youtube.com/*"],
-        "js": ["lib/browser-polyfill.js", "burjanfannify.js"],
-        "run_at": "document_idle"
+        "js": ["burjanfannify.js"],
+        "run_at": "document_end"
     }],
     "web_accessible_resources": [{
         "resources": [
@@ -26,5 +27,10 @@
         "matches": [
             "*://*/*"
         ]
-    }]
+    }],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "burjanfannify@example.com"
+        }
+    }
 }

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Settings</title>
-    <script src="lib/browser-polyfill.js"></script>
     <link rel="stylesheet" href="settings.css">
     <style>
         body {
@@ -12,14 +11,15 @@
             font-family: Arial, sans-serif;
             width: 300px;
             background-color: pink;
+            padding: 10px;
         }
-
-
 
         .fancy-checkbox {
             position: relative;
             padding-left: 30px;
             cursor: pointer;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .hidden-checkbox {
@@ -40,8 +40,8 @@
 
         .checkbox-text {
             vertical-align: bottom;
+            font-weight: bold;
         }
-
         
         .hidden-checkbox:checked+.checkmark:after {
             content: "";
@@ -54,6 +54,48 @@
             border: solid #333;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
+        }
+        
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        
+        .slider-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .slider-row {
+            display: flex;
+            align-items: center;
+        }
+        
+        .slider {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        
+        .slider-value {
+            width: 40px;
+            text-align: right;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .status-message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            min-height: 20px;
         }
     </style>
 </head>
@@ -68,20 +110,23 @@
             <span class="checkbox-text">Extension Enabled</span>
         </label>
 
-        <br><br>
+        <div class="slider-container">
+            <span class="slider-label">Appear Chance (%):</span>
+            <div class="slider-row">
+                <input type="range" id="appearChance" class="slider" min="0" max="100" step="5" />
+                <span id="appearChanceValue" class="slider-value">100</span>
+            </div>
+        </div>
 
-        <label>
-            Appear Chance (%):
-            <input type="number" id="appearChance" min="0" max="100" step="5" />
-        </label>
-
-        <br><br>
-
-        <label>
-            Flip Chance (%):
-            <input type="number" id="flipChance" min="0" max="100" step="5" />
-        </label>
-
+        <div class="slider-container">
+            <span class="slider-label">Flip Chance (%):</span>
+            <div class="slider-row">
+                <input type="range" id="flipChance" class="slider" min="0" max="100" step="5" />
+                <span id="flipChanceValue" class="slider-value">25</span>
+            </div>
+        </div>
+        
+        <div class="status-message" id="status"></div>
     </div>
 
     <script src="settings.js"></script>
